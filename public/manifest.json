@@ -1,0 +1,37 @@
+{
+  "short_name": "UCAB RIDES",
+  "name": "Ucab Rides",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo484.png",
+      "type": "image/png",
+      "sizes": "484x516"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "logo1348.png",
+      "type": "image/png",
+      "sizes": "1348x1436"
+    }
+  ],
+  "start_url": "/rol",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2271b3",
+  "status_bar": "#2271b3"
+
+}
