@@ -50,7 +50,7 @@ function Rsidebar() {
         
             <li className=" w-full  sm:mr-3 flex-1 md:w-28">
               <NavLink
-                to="/perfil"
+                to="/perfilN"
                 className={({ isActive }) =>
                 isActive
                     ? "border-b-4 border-blue-800 block md:flex  py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white"

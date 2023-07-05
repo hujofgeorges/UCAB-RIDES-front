@@ -20,7 +20,7 @@ function RedirigirPerfilUbicacion() {
         </DialogTitle>
 
         <DialogActions>
-          <Link to="../perfil">
+          <Link to="/perfilN">
             <div className="flex text-center justify-items-center">
               <div className="bg-blue-500 font-semibold rounded-lg p-3 text-white cursor-pointer">
                 Ir a Perfil
