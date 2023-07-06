@@ -2,16 +2,84 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Psidebar from "../../components/app/Psidebar";
 import axios from "axios";
-
-const setConductor = () => {
-  localStorage.setItem("ucabrides_rol", "conductor");  
-}
-
-const setPasajero = () => {
-  localStorage.setItem("ucabrides_rol", "pasajero");
-}
+import { useSnackbar } from "notistack";
+import { useEffect } from "react";
 
 function Rol() {
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const rol = localStorage.getItem("ucabrides_rol");
+  const orden = localStorage.getItem("ucabrides_orden_ruta_id");
+
+  console.log(rol);
+  console.log(orden);
+
+  const setConductor = (event) => {
+    if (rol === "pasajero" && orden !== null) {
+      event.preventDefault();
+      console.log("entro conductor");
+      enqueueSnackbar("No puedes cambiar de rol mientras estés dentro de un viaje", {
+        variant: "error",
+        autoHideDuration: 3000,
+      });
+    }
+    else {
+      localStorage.setItem("ucabrides_rol", "conductor");  
+    }
+  }
+
+  const setPasajero = (event) => {
+    if (rol === "conductor" && orden !== null) {
+      event.preventDefault();
+      console.log("entro pasajero");
+      enqueueSnackbar("No puedes cambiar de rol mientras tengas una ruta activa", {
+        variant: "error",
+        autoHideDuration: 3000,
+      });
+    }
+    else {
+      localStorage.setItem("ucabrides_rol", "pasajero"); 
+    }
+  }
+
+  const loadActiveRouteAsPassenger = async () => {
+    try {
+      const ordenPasajero = await axios.get(
+        `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/obtener_orden_activa`, {headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        }}
+      );
+      if (ordenPasajero.data !== null) {
+        localStorage.setItem("ucabrides_orden_ruta_id", ordenPasajero.data._id);
+        localStorage.setItem("ucabrides_rol", "pasajero");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const loadActiveRouteAsDriver = async () => {
+    try {
+      const ordenConductor = await axios.get(
+        `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/ordenes_rutas`, {headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        }}
+      );
+      if (ordenConductor.data !== null) {
+        localStorage.setItem("ucabrides_rol", "conductor");
+        localStorage.setItem("ucabrides_orden_ruta_id", ordenConductor.data._id);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    loadActiveRouteAsDriver();
+    loadActiveRouteAsPassenger();
+  }, []);
+
   return (
     <>
       <div className="flex h-screen justify-center items-center  rounded-lg">
