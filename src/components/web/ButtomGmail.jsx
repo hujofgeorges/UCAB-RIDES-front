@@ -66,9 +66,9 @@ function ButtomGmail() {
 
   return (
     <div className="flex justify-center rounded-md">
-      <GoogleLogin className="w-1/0.5   rounded-md justify-center text-white bg-red-400 hover:bg-red-500"
+      <GoogleLogin className="w-1/0.5 rounded-md justify-center text-white bg-red-400 hover:bg-red-500"
         clientId={clientId}
-        buttonText="Crea un nuevo usuario"
+        buttonText="Autentitacion con Google"
         onSuccess={responseGoogleSuccess}
         onFailure={responseGoogleFailed}
       />
