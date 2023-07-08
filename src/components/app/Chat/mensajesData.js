@@ -4,6 +4,5 @@ export const msjpasajero = [
     '¿Estás cerca?',
     'Estoy en la parada de colas',
     'Si',
-    'No',
-    'Nigga nigga whaaaaaaaaatt?'
+    'No'
 ]
