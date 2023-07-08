@@ -4,7 +4,7 @@ import Header from "../../components/web/Header";
 import axios from "../../api/axios";
 import { useSnackbar } from "notistack";
 import ButtomGmail from "../../components/web/ButtomGmail";
-import flecha from "../../images/atrasizq.png"
+import flecha from "../../images/flechaizqnegra.png"
 function Login() {
   const navigate = useNavigate();
   const emailRef = useRef();

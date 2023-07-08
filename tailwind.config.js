@@ -9,7 +9,7 @@ module.exports = {
           verde: '#24CE6B',
           customGreen: '#2bb94f',
           fondo: '#f0f0f0',
-          fondo_flecha: '#2d3748',
+          fondo_flecha: '#f0f0f0',
       }
     },
   },
