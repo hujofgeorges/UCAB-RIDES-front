@@ -16,31 +16,31 @@ function Rol() {
   console.log(orden);
 
   const setConductor = (event) => {
-    if (rol === "pasajero" && orden !== null) {
-      event.preventDefault();
-      console.log("entro conductor");
-      enqueueSnackbar("No puedes cambiar de rol mientras estés dentro de un viaje", {
-        variant: "error",
-        autoHideDuration: 3000,
-      });
-    }
-    else {
+    // if (rol === "pasajero" && orden !== null) {
+    //   event.preventDefault();
+    //   console.log("entro conductor");
+    //   enqueueSnackbar("No puedes cambiar de rol mientras estés dentro de un viaje", {
+    //     variant: "error",
+    //     autoHideDuration: 3000,
+    //   });
+    // }
+    // else {
       localStorage.setItem("ucabrides_rol", "conductor");  
-    }
+    // }
   }
 
   const setPasajero = (event) => {
-    if (rol === "conductor" && orden !== null) {
-      event.preventDefault();
-      console.log("entro pasajero");
-      enqueueSnackbar("No puedes cambiar de rol mientras tengas una ruta activa", {
-        variant: "error",
-        autoHideDuration: 3000,
-      });
-    }
-    else {
+    // if (rol === "conductor" && orden !== null) {
+    //   event.preventDefault();
+    //   console.log("entro pasajero");
+    //   enqueueSnackbar("No puedes cambiar de rol mientras tengas una ruta activa", {
+    //     variant: "error",
+    //     autoHideDuration: 3000,
+    //   });
+    // }
+    // else {
       localStorage.setItem("ucabrides_rol", "pasajero"); 
-    }
+    // }
   }
 
   const loadActiveRouteAsPassenger = async () => {
@@ -76,8 +76,8 @@ function Rol() {
   };
 
   useEffect(() => {
-    loadActiveRouteAsDriver();
-    loadActiveRouteAsPassenger();
+    // loadActiveRouteAsDriver();
+    // loadActiveRouteAsPassenger();
   }, []);
 
   return (
