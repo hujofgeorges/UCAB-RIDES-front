@@ -38,13 +38,14 @@ function Login() {
   };
   return (
     <div className="flex flex-col min-h-screen overflow-hidden ">
-      <button className="fixed top-0 left-0 m-4 p-2 w-9 h-9 rounded-md bg-fondo_flecha text-white flex justify-center items-center ">
+      <button className="fixed top-0 left-0 m-4 p-2 w-9 h-9 rounded-md bg-fondo_flecha text-white flex justify-center items-center shadow-md">
         <img
           src={flecha}
           alt=""
           className="h-4 inline-block"
         />
       </button>
+
 
 
       {/*  Site header */}
@@ -117,13 +118,13 @@ function Login() {
                     </div>
                   </div>
                   <div className="flex items-center justify-center mt-10">
-                      <label
-                        className="block text-customGreen text-sm font-medium mb-1"
-                        htmlFor="password"
-                      >
-                        Olvidaste tu contraseña?
-                      </label>
-                    </div>
+                    <label
+                      className="block text-customGreen text-sm font-medium mb-1"
+                      htmlFor="password"
+                    >
+                      Olvidaste tu contraseña?
+                    </label>
+                  </div>
                 </form>
                 <div className="flex items-center my-2 rounded-md"></div>
                 <div className="fixed bottom-10 left-0 w-full flex justify-center">
