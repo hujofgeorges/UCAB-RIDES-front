@@ -23,6 +23,19 @@ function ColaEnCurso({ user }) {
   const [estatus, setEstatus] = useState(null);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const [ location, setLocation ] = useState(null);
+  
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+      },
+      (error) => {
+        console.log("Error al obtener la ubicación:", error);
+      }
+    );
+  }
+
 
   const handleClose = () => {
     setOpen(false);
@@ -38,7 +51,9 @@ function ColaEnCurso({ user }) {
           orden_ruta_id: detalles_orden.id,
           user_id: user._id,
           bandera: "aprobado",
-        })
+        }, {headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        }})
 
         const enviar = {
           messaging_product: "whatsapp",
@@ -80,12 +95,16 @@ function ColaEnCurso({ user }) {
         localStorage.removeItem("ucabrides_orden_ruta_id");
         localStorage.removeItem("ucabrides_puntomascerca");
     } else {
-      await axios.post("http://127.0.0.1:8000/api/cambiar_estatus_usuario_cancelar", {
+      await axios.post("https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/cambiar_estatus_usuario_cancelar", {
         orden_ruta_id: detalles_orden.id,
         user_id: user._id,
         bandera: aprobacion,
-      });
+      }, {headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`
+      }});
     }
+    localStorage.removeItem("ucabrides_orden_ruta_id");
+    localStorage.removeItem("ucabrides_puntomascerca");
     setOpen(false);
     setBandera(true);
     navigate("/listado/colas");
@@ -102,19 +121,18 @@ function ColaEnCurso({ user }) {
           );
           setDetalles_orden({
             id: response.data.detalles_orden._id,
-            asientos: response.data.detalles_orden.asientos,
-            lat: response.data.detalles_orden.rutas.lat,
-            lng: response.data.detalles_orden.rutas.lng,
-            hora:response.data.detalles_orden.rutas.hora,
-            usuarios: response.data.detalles_orden.usuarios,
-            vehiculo: response.data.detalles_orden.vehiculo,
+            seats: response.data.detalles_orden.asientos,
+            lat: response.data.detalles_orden.route_id.lat,
+            lng: response.data.detalles_orden.route_id.lng,
+            hour:response.data.detalles_orden.hours,
+            usuarios: response.data.detalles_orden.users,
+            vehicle: response.data.detalles_orden.vehicle_id,
             distancia: puntomascerca.distancia,
             puntomascerca: [
               puntomascerca.distancia,
               puntomascerca.lat,
               puntomascerca.lng,
-            ],
-            
+            ],            
           });
         });
 
@@ -128,10 +146,14 @@ function ColaEnCurso({ user }) {
       axios.get("https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/me", {headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`
       }}).then((response) => {
+        if (response.data.orden_ruta_id === null) {
+          localStorage.removeItem("ucabrides_orden_ruta_id");
+        }
         setEstatus(response.data);
       });
     }
     obtener_detalles();
+    getLocation();
   }, []);
 
   return (
@@ -155,7 +177,7 @@ function ColaEnCurso({ user }) {
               <div
                 className={`-mt-5 mx-3 rounded-lg flex-1 ${
                   estatus
-                    ? estatus.cola === "true"
+                    ? estatus.cola === "true" || estatus.cola === "cancelado" || estatus.cola === "rechazado"
                       ? "bg-red-500"
                       : "bg-green-500"
                     : "bg-slate-500"
@@ -164,8 +186,13 @@ function ColaEnCurso({ user }) {
                 {estatus
                   ? estatus.cola === "true"
                     ? "Pendiente"
-                    : "Aprobado"
-                  : "Cargando"}
+                    : estatus.cola === "cancelado"
+                      ? "Cancelado"
+                      : estatus.cola === "rechazado"
+                        ? "Rechazado"
+                        : "Aprobado"
+                  : "Cargando"
+                }
               </div>
 
               {open &&

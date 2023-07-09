@@ -19,38 +19,42 @@ function ColaAbierta({user}) {
 
   const cancelar_cola=()=>{
     if(usuarios?.length>0)
-      enqueueSnackbar("No se puede cancelar, primero elimina los usuario por acepta 😞", { variant: "info" });
+      enqueueSnackbar("No se puede cancelar, primero elimina los usuario por aceptar 😞", { variant: "error" });
 
     else if(detalles.users?.length===0){ 
       console.log(detalles._id, detalles.route_id._id)
       axios.post(
         `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/desactivar`,
         { orden_ruta_id: detalles._id, ruta_id: detalles.route_id._id },
-       
+        {headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        }}
       );
+      localStorage.removeItem("ucabrides_orden_ruta_id");
       navigate("/listado/rutas");
-      enqueueSnackbar("ruta desactivada con exito", { variant: "success" });
+      enqueueSnackbar("cola cancelada con exito", { variant: "success" });
     }else{
-      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,bandera:'cancelado'},
+      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,flag:'cancelado'},
      )
+      localStorage.removeItem("ucabrides_orden_ruta_id");
       navigate("/listado/rutas");
       enqueueSnackbar("ruta desactivada con exito", { variant: "success" });
     }
   }
 
   const completar_cola=()=>{
-    if(usuarios?.length>0)
-    enqueueSnackbar("No se puede cancelar, primero elimina los usuario por aceptar 😞", { variant: "info" });
-
-    else if(detalles.usuarios?.length===0){ 
+    if(detalles.users?.length === 0){ 
       enqueueSnackbar("No puedes completar la cola sin usuarios", { variant: "error" });
     }else{
-      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,bandera:'completado'},
+      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,flag:'completado'},
       ).then((response)=>{
       })
+      localStorage.removeItem("ucabrides_orden_ruta_id");
       navigate("/listado/rutas");
       enqueueSnackbar("Cola completada con exito", { variant: "success" });
+
     }
+    
   }
 
   useEffect(() => {

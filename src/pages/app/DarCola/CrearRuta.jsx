@@ -330,6 +330,7 @@ function Map() {
                 >
                   Guardar
               </button>
+              { origin && selected && (
               <NavLink to={`/personalizar/ruta/${origin.lat}/${origin.lng}/${selected.lat}/${selected.lng}`}
                       className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"  
                       style={{ display: "block"}}
@@ -339,6 +340,7 @@ function Map() {
               >
                   Personalizar Ruta
               </NavLink>
+              )}
             </div>
         </div>
             {/* <div className="m-3 rounded-lg bg-gradient-to-l  vh-100 flex flex-row md:flex-col pt-3 md:py-3  px-2 text-center ">

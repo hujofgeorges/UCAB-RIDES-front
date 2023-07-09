@@ -95,6 +95,7 @@ function ListadoRutas() {
       }, {headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`
       }});
+      localStorage.removeItem("ucabrides_orden_ruta_id");
       refresh();
     }
   };

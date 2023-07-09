@@ -12,7 +12,7 @@ import { useSnackbar } from "notistack";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import  Axios  from "axios";
 
-function UsuariosPorAceptar({ usuarios, orden_ruta_id,conductor }) {
+function UsuariosPorAceptar({ usuarios, orden_ruta_id, conductor }) {
   console.log(usuarios);
   const check = <FontAwesomeIcon icon={faCheck} />;
   const eliminar = <FontAwesomeIcon icon={faTrash} />;
