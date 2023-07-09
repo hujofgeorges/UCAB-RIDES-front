@@ -65,14 +65,14 @@ function ButtomGmail() {
   }, []);
 
   return (
-    <>
-      <GoogleLogin className="w-full justify-center text-white bg-red-400 hover:bg-red-500"
+    <div className="flex justify-center rounded-md">
+      <GoogleLogin className="w-1/0.5   rounded-md justify-center text-white bg-red-400 hover:bg-red-500"
         clientId={clientId}
-        buttonText="Continuar con Correo Ucab"
+        buttonText="Crea un nuevo usuario"
         onSuccess={responseGoogleSuccess}
         onFailure={responseGoogleFailed}
       />
-    </>
+    </div>
   );
 }
 

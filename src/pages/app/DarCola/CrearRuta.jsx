@@ -257,6 +257,7 @@ function Map() {
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+            scrollwheel: false,
           }}
         >
           {origin && (
