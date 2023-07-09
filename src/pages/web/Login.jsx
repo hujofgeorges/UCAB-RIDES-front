@@ -59,9 +59,9 @@ function Login() {
             <div className="pt-32 pb-12 bg-fondo md:pt-40 md:pb-20">
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1 text-black">Bienvenido a</h1>
+                <h1 className="h1 font-inter text-black">Bienvenido a</h1>
 
-                <h1 className="h1 bg-clip-text text-transparent bg-gradient-to-r text-customGreen to-teal-400">
+                <h1 className="h1 font-inter bg-clip-text text-transparent bg-gradient-to-r text-customGreen to-teal-400">
                   UCAB RIDES
                 </h1>
               </div>
@@ -72,7 +72,7 @@ function Login() {
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3 ">
                       <label
-                        className="block text-black text-sm font-medium mb-1"
+                        className="block font-inter text-black text-sm font-medium mb-1"
                         htmlFor="email"
                       >
                         Usuario o Correo Ucab
@@ -94,7 +94,7 @@ function Login() {
                     <div className="w-full px-3">
                       <div className="flex justify-between">
                         <label
-                          className="block text-black text-sm font-medium mb-1"
+                          className="block font-inter text-black text-sm font-medium mb-1"
                           htmlFor="password"
                         >
                           Clave
@@ -114,14 +114,14 @@ function Login() {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button className="iniciar btn rounded-md text-black bg-customGreen hover:bg-hoverGreen w-full">
+                      <button className=" font-inter iniciar btn rounded-md text-black bg-customGreen hover:bg-hoverGreen w-full">
                         Iniciar Sesion
                       </button>
                     </div>
                   </div>
                   <div className="flex items-center justify-center mt-10">
                     <label
-                      className="block text-customGreen hover:text-hoverGreen text-sm font-medium mb-1"
+                      className="block  font-inter text-customGreen hover:text-hoverGreen text-sm font-medium mb-1"
                       htmlFor="password"
                     >
                       Olvidaste tu contraseña?
@@ -131,7 +131,7 @@ function Login() {
                   <div className="px-4 mt-10">
                     <div className="flex flex-col w-full rounded-full items-center justify-center">
                     <label
-                      className="block text-letra_clara text-sm mt-20 mb-5 font-medium"
+                      className="block font-inter text-letra_clara text-sm mt-20 mb-5 font-medium"
                     >
                       ¿Eres un nuevo usuario? Regístrate o inicia sesión aquí:
                     </label>
