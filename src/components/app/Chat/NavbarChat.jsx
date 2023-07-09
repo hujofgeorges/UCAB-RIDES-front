@@ -6,6 +6,8 @@ import './NavbarChat.css';
 import chatox from '../../../images/conversation.png'
 import { Contacts } from './Contacts';
 import { PredetMsgs } from './PredetMsgs';
+import  contactos  from '../../../images/group.png'
+import  logochat  from '../../../images/Chat Rides.png'
 
 
 function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput}) {
@@ -37,13 +39,16 @@ function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput}) {
   return (
     <>
     <div className='navbar'>
-      <NavLink to='#' className='menu-bars'>
+      {/* <NavLink to='#' className='menu-bars'>
          <FaIcons.FaBars onClick={showSidebar} />
-      </NavLink>
+      </NavLink> */}
+
+      <img src={contactos} onClick={showSidebar} className='menu-bars' />
      <div className='mx-auto'>
-          <h1 className=' text-white'>
-            Chat Rides
-          </h1>
+
+
+     <img src={logochat} className='logo' />
+        
      </div>
 
     { toggleChat && ( 

@@ -108,6 +108,7 @@ export const ChatContainer = ({currentChatt, currentUser, input, setInput, socke
 
 
 const Container = styled.div`
+ 
   padding-top: 1rem;
   display: grid;
   grid-template-rows: 10% 78% 12%;
@@ -125,6 +126,7 @@ const Container = styled.div`
       .avatar {
         img {
           height: 3rem;
+          border-radius: 50%;
         }
       }
       .username {
@@ -157,7 +159,7 @@ const Container = styled.div`
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 1rem;
-        color: #d1d1d1;
+        color: black;
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;
         }
@@ -166,13 +168,13 @@ const Container = styled.div`
     .sended {
       justify-content: flex-end;
       .content {
-        background-color: #4f04ff21;
+        background-color: #2BB94F;
       }
     }
     .recieved {
       justify-content: flex-start;
       .content {
-        background-color: #9900ff20;
+        background-color: #c0c0c0;
       }
     }
   }

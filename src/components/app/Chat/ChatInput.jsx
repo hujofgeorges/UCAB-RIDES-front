@@ -21,7 +21,7 @@ export const ChatInput = ({handleSendMsg, input, setInput}) => {
       <form className="input-container" onSubmit={(event) => sendChat(event)}>
         <input
           type="text" readOnly
-          placeholder="type your message here"
+          placeholder="Seleccione un mensaje"
           // onChange={(e) => setMsg(e.target.value)} 
           value={input} 
         />

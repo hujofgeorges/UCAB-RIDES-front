@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import {msjpasajero} from "./mensajesData.js"
 import { useState } from "react";
+import {v4 as uuidv4} from 'uuid';
 
 export const PredetMsgs = ({setInput}) => {
   const [currentSelected, setCurrentSelected] = useState(undefined);
@@ -16,6 +17,7 @@ export const PredetMsgs = ({setInput}) => {
           {msjpasajero.map((msj, index) => {
             return (
               <div
+                key={uuidv4()}
                 className={`contact ${
                   index === currentSelected ? "selected" : ""
                 }`}
