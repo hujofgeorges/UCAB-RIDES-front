@@ -19,7 +19,7 @@ function ColaAbierta({user}) {
 
   const cancelar_cola=()=>{
     if(usuarios?.length>0)
-      enqueueSnackbar("No se puede cancelar, primero elimina los usuario por aceptar 😞", { variant: "error" });
+      enqueueSnackbar("No se puede cancelar, primero elimina los usuario por aceptar.", { variant: "error" });
 
     else if(detalles.users?.length===0){ 
       console.log(detalles._id, detalles.route_id._id)
@@ -32,13 +32,14 @@ function ColaAbierta({user}) {
       );
       localStorage.removeItem("ucabrides_orden_ruta_id");
       navigate("/listado/rutas");
-      enqueueSnackbar("cola cancelada con exito", { variant: "success" });
+      enqueueSnackbar("Cola cancelada con exito.", { variant: "success" });
     }else{
-      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,flag:'cancelado'},
-     )
+      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,flag:'cancelado'},{headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`
+      }})
       localStorage.removeItem("ucabrides_orden_ruta_id");
       navigate("/listado/rutas");
-      enqueueSnackbar("ruta desactivada con exito", { variant: "success" });
+      enqueueSnackbar("Cola cancelada con exito.", { variant: "success" });
     }
   }
 
@@ -46,9 +47,9 @@ function ColaAbierta({user}) {
     if(detalles.users?.length === 0){ 
       enqueueSnackbar("No puedes completar la cola sin usuarios", { variant: "error" });
     }else{
-      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,flag:'completado'},
-      ).then((response)=>{
-      })
+      axios.post('https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/modificar_cola_conductor',{orden_ruta_id:detalles._id,flag:'completado'},{headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`
+      }})
       localStorage.removeItem("ucabrides_orden_ruta_id");
       navigate("/listado/rutas");
       enqueueSnackbar("Cola completada con exito", { variant: "success" });
