@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 /*************************************/
-import Dsidebar from "../../../components/app/Dsidebar";
+import Bsidebar from "../../../components/app/Bsidebar";
 import { useSnackbar } from "notistack";
 import RedirigirPerfilTelefono from "../../../components/app/RecibirCola/RedirigirPerfilTelefono";
 import { Link } from "react-router-dom";
@@ -270,7 +270,7 @@ function ListadoRutas() {
           </DialogContent>
         </Dialog>
       )}
-      <Dsidebar />
+      <Bsidebar />
     </>
   );
 }
