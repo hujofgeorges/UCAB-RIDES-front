@@ -68,12 +68,12 @@ export const Chat = ({user, rol, orden}) => {
           {
             currentChat === undefined ?
             <Welcome currentUser={currentUser}/> :
-            <ChatContainer currentChatt={currentChat} currentUser={currentUser} input={input} setInput={setInput} socket={socket}/>
+            <ChatContainer currentChatt={currentChat} currentUser={currentUser} input={input} setInput={setInput} socket={socket} rol={rol}/>
             
           }
           </div>  
         </Container>
-          <NavbarChat contacts={contacts} currentUser={currentUser} changeChat={handleChatChange} toggleChat={toggleChat} setInput={setInput}/>
+          <NavbarChat contacts={contacts} currentUser={currentUser} changeChat={handleChatChange} toggleChat={toggleChat} setInput={setInput} rol={rol}/>
     </>
   );
 }

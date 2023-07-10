@@ -10,7 +10,7 @@ import  contactos  from '../../../images/group.png'
 import  logochat  from '../../../images/Chat Rides.png'
 
 
-function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput}) {
+function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput, rol}) {
 
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
@@ -28,17 +28,34 @@ function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput}) {
   const [leftbar, setLeftBar] = useState(false);
 
   const showSidebar = () => {
-    setSidebar(!sidebar)
-    setLeftBar(false)
+
+    // if (ban) {
+    //   setSidebar(true)
+    //   setLeftBar(false)
+    // }
+
+  
+      setSidebar(!sidebar)
+      setLeftBar(false)
+    
+
   };
-  const showLeftbar = () => {
+  const showLeftbar = (ban) => {
+
+    if (ban) {
     setLeftBar(!leftbar)
     setSidebar(false)
+    }
+
+    if (!ban) {
+      setLeftBar(true)
+      setSidebar(false)
+      }
   };
 
   return (
     <>
-    <div className='navbar'>
+    <div className='navbarchat'>
       {/* <NavLink to='#' className='menu-bars'>
          <FaIcons.FaBars onClick={showSidebar} />
       </NavLink> */}
@@ -59,25 +76,27 @@ function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput}) {
      
     </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <div className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
+          <div className='nav-menu-items' onClick={showSidebar} >
+            <li className='navbar-toggle-chat'>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            <Contacts contacts={contacts} currentUser={currentUser} changeChat={changeChat}/>
+            <hr />
+             <Contacts contacts={contacts} currentUser={currentUser} changeChat={changeChat} rol={rol} />
           </div>
         </nav>
 
+
         
         <nav className={!leftbar ? 'nav-menu-right active' : 'nav-menu-right'}>
-          <div className='nav-menu-items' onClick={showLeftbar}>
-            <li className='navbar-toggle'>
+          <div className='nav-menu-items'>
+            <li className='navbar-toggle-chat' onClick={() => showLeftbar(true)}>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-              <PredetMsgs setInput={setInput}/>
+              <PredetMsgs setInput={setInput} rol={rol}/>
           </div>
         </nav>
     </>

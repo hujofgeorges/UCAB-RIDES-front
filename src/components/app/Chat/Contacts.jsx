@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 
 
-export const Contacts = ({contacts, currentUser, changeChat}) => {
+export const Contacts = ({contacts, currentUser, changeChat, rol}) => {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
+  
 
 
   useEffect(() => {
@@ -27,7 +28,15 @@ export const Contacts = ({contacts, currentUser, changeChat}) => {
     {currentUserImage && currentUserName && (
       <Container>
         <div className="brand">
-          <h3>Contactos</h3>
+
+         {
+            rol === "conductor"
+                   ?
+             <h3>Pasajeros</h3>
+                    :
+             <h3>Conductor</h3>
+         }
+  
         </div>
         <div className="contacts">
           {contacts.map((contact, index) => {
@@ -37,7 +46,9 @@ export const Contacts = ({contacts, currentUser, changeChat}) => {
                 className={`contact ${
                   index === currentSelected ? "selected" : ""
                 }`}
-                onClick={() => changeCurrentChat(index, contact)}
+                onClick={() => {
+                  changeCurrentChat(index, contact);
+                }}
               >
                 <div className="avatar">
                   <img
@@ -68,13 +79,15 @@ export const Contacts = ({contacts, currentUser, changeChat}) => {
   </>
 );
 }
+
+
  
 
 const Container = styled.div`
   display: grid;
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
-  background-color: #080420;
+  background-color: #e5e5e5;
   height: 90vh;
   .brand {
     display: flex;
@@ -85,8 +98,9 @@ const Container = styled.div`
       height: 2rem;
     }
     h3 {
-      color: white;
-      text-transform: uppercase;
+      color: black;
+      font-family: 'inter', sans-serif;
+      font-size: 2rem;
     }
   }
   .contacts {
@@ -104,7 +118,7 @@ const Container = styled.div`
       }
     }
     .contact {
-      background-color: #ffffff34;
+      background-color: #fff0f3;
       min-height: 5rem;
       cursor: pointer;
       width: 90%;
@@ -112,6 +126,7 @@ const Container = styled.div`
       padding: 0.4rem;
       display: flex;
       gap: 1rem;
+      box-shadow: 0 0 2rem 0.5rem #00000029;
       align-items: center;
       transition: 0.5s ease-in-out;
       .avatar {
@@ -121,16 +136,18 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: black;
+          font-family: 'inter', sans-serif;
+          font-size: 1.5rem;
         }
       }
     }
     .selected {
-      background-color: #9a86f3;
+      background-color: #2BB94F;
     }
   }
   .current-user {
-    background-color: #0d0d30;
+    background-color: #37b4e3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,11 +156,14 @@ const Container = styled.div`
       img {
         height: 4rem;
         max-inline-size: 100%;
+        border-radius: 50%;
       }
     }
     .username {
       h2 {
-        color: white;
+        color: black;
+        font-family: 'inter', sans-serif;
+        font-size: 1.5rem;
       }
     }
     @media screen and (min-width: 720px) and (max-width: 1080px) {

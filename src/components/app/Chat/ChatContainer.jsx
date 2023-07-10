@@ -5,7 +5,8 @@ import axios from '../../../api/axios';
 import {v4 as uuidv4} from 'uuid';
 
 
-export const ChatContainer = ({currentChatt, currentUser, input, setInput, socket}) => {  
+
+export const ChatContainer = ({currentChatt, currentUser, input, setInput, socket, rol}) => {  
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
@@ -79,6 +80,7 @@ export const ChatContainer = ({currentChatt, currentUser, input, setInput, socke
               <div className="username">
                 <h3>{currentChatt.name.split(" ")[0]}</h3>
               </div>
+              
             </div>
 
           </div>
@@ -87,17 +89,31 @@ export const ChatContainer = ({currentChatt, currentUser, input, setInput, socke
               messages.map((message) => {
                 return (
                 <div ref={scrollRef} key={uuidv4()} > 
-                  <div className={`message ${message.fromSelf ? "sended" : "recieved"}`}> 
-                    <div className="content">
-                    <p>
-                        {message.message}
-                    </p>
-                 </div>
-                 </div>
+
+                  {rol === "conductor" ? 
+                    <div className={`message ${message.fromSelf ? "sendedConductor" : "recievedConductor"}`}> 
+                      <div className="content">
+                        <p>
+                            {message.message}
+                        </p>
+                      </div>
+                    </div>
+                    : 
+                    <div className={`message ${message.fromSelf ? "sendedPasajero" : "recievedPasajero"}`}> 
+                      <div className="content">
+                        <p>
+                            {message.message}
+                        </p>
+                      </div>
+                    </div>
+                  }
+
                 </div>
                )
               })
             }
+
+            
           </div>
              <ChatInput handleSendMsg={handleSendMsg} input={input} setInput={setInput} /> 
         </Container>
@@ -131,7 +147,9 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: black;
+          font-family: 'inter', sans-serif;
+          font-size: 1.6rem;
         }
       }
     }
@@ -142,6 +160,7 @@ const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
     overflow: auto;
+    font-family: 'inter', sans-serif;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -165,17 +184,32 @@ const Container = styled.div`
         }
       }
     }
-    .sended {
+    .sendedConductor {
       justify-content: flex-end;
       .content {
         background-color: #2BB94F;
       }
     }
-    .recieved {
+    .recievedConductor {
       justify-content: flex-start;
       .content {
-        background-color: #c0c0c0;
+        // background-color: #c0c0c0;
+        background-color: #37b4e3;
       }
     }
+    .sendedPasajero {
+      justify-content: flex-end;
+      .content {
+        background-color: #37b4e3;
+      }
+    }
+    .recievedPasajero {
+      justify-content: flex-start;
+      .content {
+        // background-color: #c0c0c0;
+        background-color: #2BB94F;
+      }
+    }
+    
   }
 `;
