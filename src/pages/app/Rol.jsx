@@ -4,6 +4,8 @@ import Psidebar from "../../components/app/Psidebar";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useEffect } from "react";
+import conductor from "../../images/conductor.png"
+import pasajero from "../../images/pasajero0.png"
 
 function Rol() {
 
@@ -25,7 +27,7 @@ function Rol() {
     //   });
     // }
     // else {
-      localStorage.setItem("ucabrides_rol", "conductor");  
+    localStorage.setItem("ucabrides_rol", "conductor");
     // }
   }
 
@@ -39,16 +41,18 @@ function Rol() {
     //   });
     // }
     // else {
-      localStorage.setItem("ucabrides_rol", "pasajero"); 
+    localStorage.setItem("ucabrides_rol", "pasajero");
     // }
   }
 
   const loadActiveRouteAsPassenger = async () => {
     try {
       const ordenPasajero = await axios.get(
-        `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/obtener_orden_activa`, {headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`
-        }}
+        `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/obtener_orden_activa`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`
+          }
+      }
       );
       if (ordenPasajero.data !== null) {
         localStorage.setItem("ucabrides_orden_ruta_id", ordenPasajero.data._id);
@@ -62,9 +66,11 @@ function Rol() {
   const loadActiveRouteAsDriver = async () => {
     try {
       const ordenConductor = await axios.get(
-        `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/ordenes_rutas`, {headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`
-        }}
+        `https://api-ucabrides-v2-7913fcd58355.herokuapp.com/api/ordenes_rutas`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`
+          }
+      }
       );
       if (ordenConductor.data !== null) {
         localStorage.setItem("ucabrides_rol", "conductor");
@@ -82,29 +88,22 @@ function Rol() {
 
   return (
     <>
-      <div className="flex h-screen justify-center items-center  rounded-lg">
-        <div className="w-96 px-3">
+      <div className="flex h-screen bg-fondo justify-center items-center">
+        <div className="flex flex-col gap-4">
           <NavLink to="/listado/rutas" onClick={setConductor}>
-            <div className="content-center items-center bg-sky-500 hover:bg-sky-600 border-collapse border-gray-400   lg:border-gray-400 rounded-lg  p-4 leading-normal">
-              <div className="">
-                <div className="text-white font-bold  text-3xl mb-2 text-center ">
-                  DAR COLA
-                </div>
-              </div>
+            <div className="text-black font-inter  text-3xl mb-2 text-center">
+              <span className="block mt-2 mb-3">Conductor</span>
+              <img src={conductor} alt="Icono Conductor" className="border-2 border-customGreen mx-auto w-20 rounded-md mb-2" /> {/* Reemplaza "/ruta-conductor.png" con la ruta de tu imagen para conductor */}
             </div>
           </NavLink>
-          <NavLink to="/listado/colas" onClick={setPasajero}>
-            <div className="content-center mt-4 bg-slate-500 border-collapse hover:bg-slate-600 border-gray-400   lg:border-gray-400 rounded-lg  p-4 leading-normal">
-              <div className="justify-center">
-                <div className="text-white font-bold  text-3xl mb-2 text-center ">
-                  RECIBIR COLA
-                </div>
-              </div>
+          <NavLink to="/perfilN" onClick={setPasajero}>
+            <div className="text-black font-inter text-3xl mb-2 text-center">
+              <span className="block mt-2 mb-3">Pasajero</span>
+              <img src={pasajero} alt="Icono Pasajero" className="mx-auto border-2 border-azul w-20 rounded-md mb-2" /> {/* Reemplaza "/ruta-pasajero.png" con la ruta de tu imagen para pasajero */}
             </div>
           </NavLink>
         </div>
       </div>
-      <Psidebar/>
     </>
   );
 }

@@ -6,7 +6,6 @@ import {
   DirectionsRenderer,
 } from "@react-google-maps/api";
 import logo from "../../../images/fondo_logos.png";
-import Dsidebar from "../../../components/app/Dsidebar";
 import { Flex } from "@chakra-ui/react";
 import axios from "../../../api/axios";
 import { useSnackbar } from "notistack";

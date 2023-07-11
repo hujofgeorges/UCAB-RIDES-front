@@ -16,7 +16,9 @@ export const Chat = ({user, rol, orden}) => {
   const [currentChat, setCurrentChat] = useState(undefined);
   const [toggleChat, setToggleChat] = useState(false);
   const [input, setInput] = useState("");
+  
 
+ 
   
   useEffect(() => {
     if (rol === "conductor" && user !== undefined) {
@@ -54,6 +56,8 @@ export const Chat = ({user, rol, orden}) => {
       setCurrentChat(chat);
       setToggleChat(true);
     };
+
+
                                               // La idea de esta parte es que cuando haya una cola en curso los contactos para la parte del conductor sean los pasajeros, y todos los pasajeros individualmente tengan su contacto con el conductor.
   return (
     <> 
@@ -64,12 +68,12 @@ export const Chat = ({user, rol, orden}) => {
           {
             currentChat === undefined ?
             <Welcome currentUser={currentUser}/> :
-            <ChatContainer currentChatt={currentChat} currentUser={currentUser} input={input} setInput={setInput} socket={socket}/>
+            <ChatContainer currentChatt={currentChat} currentUser={currentUser} input={input} setInput={setInput} socket={socket} rol={rol}/>
             
           }
           </div>  
         </Container>
-          <NavbarChat contacts={contacts} currentUser={currentUser} changeChat={handleChatChange} toggleChat={toggleChat} setInput={setInput}/>
+          <NavbarChat contacts={contacts} currentUser={currentUser} changeChat={handleChatChange} toggleChat={toggleChat} setInput={setInput} rol={rol}/>
     </>
   );
 }
@@ -81,8 +85,9 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #f0f0f0;
   .container {
+    margin-top: 2rem;
     height: 85vh;
     width: 85vw;
     background-color: #00000076;
@@ -91,10 +96,10 @@ const Container = styled.div`
 
   .glass{
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-      backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 20px;
       border:1px solid rgba(255, 255, 255, 0.18);
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
     }
 `;

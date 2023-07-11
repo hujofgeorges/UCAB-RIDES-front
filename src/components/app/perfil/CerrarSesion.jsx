@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import salir from '../../../images/exit.png';
 
 function CerrarSesion() {
   const navigate = useNavigate();
@@ -16,22 +17,15 @@ function CerrarSesion() {
   return (
     <>
       <div
-        className="z-20 relative"
-        style={{ transform: "traslateX(-50%)", margin: "auto" }}
+       className="cursor-pointer w-full border-gray-100 text-gray-50 hover:text-gray-600 pl-8 pr-3  block hover:bg-gray-100 transition duration-150 font-inter"
+       onClick={cerrar_sesion}
       >
-        {/* <h1 className="h1 text-center">Bienvenido a</h1>
-        <h1 className="text-center pb-5 h1 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-          UCAB RIDES
-        </h1> */}
-        <div className="justify-center text-center mt-20">
-          <div
-            onClick={cerrar_sesion}
-            style={{ cursor: "pointer" }}
-            className=" btn text-white  bg-gradient-to-l from-blue-400 via-blue-500 to-blue-500 "
-          >
-            Cerrar Sesion
-          </div>
-        </div>
+        <img
+          src={salir}
+          alt=""
+          className="h-8 inline-block mr-2"
+        />
+         Cerrar Sesión
       </div>
     </>
   );

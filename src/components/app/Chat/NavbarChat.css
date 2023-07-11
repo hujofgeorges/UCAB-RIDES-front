@@ -1,5 +1,5 @@
-.navbar {
-  background-color: #131324;
+.navbarchat {
+  background-color: #f0f0f0;
   height: 70px;
   width: 100%;
   display: flex;
@@ -15,11 +15,13 @@
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
+  height: 50px; /* Alto específico en píxeles */
+  width: 50px; /* Ancho específico en píxeles */
   z-index: 50;
 }
 
 .nav-menu {
-  background-color: #131324;
+  background-color: #241313;
   width: 300px;
   height: 100vh;
   display: flex;
@@ -68,8 +70,8 @@
   width: 100%;
 }
 
-.navbar-toggle {
-  background-color: #131324;
+.navbar-toggle-chat {
+  background-color: #e5e5e5;
   width: 100%;
   height: 80px;
   display: flex;
@@ -132,4 +134,20 @@
 
 .colour {
   background-color: #4c9fc9;
+}
+
+.custom-gradient {
+  font-size: 2rem;
+  line-height: 2.5rem;  
+  font-weight: bold;
+  background-clip: text; 
+  -webkit-background-clip: text;
+  color: transparent; 
+  background-image: linear-gradient(to right, #2bb94f, #2bb94f); 
+
+}
+
+.logo { 
+    height: 185px;
+    width: 185px;
 }

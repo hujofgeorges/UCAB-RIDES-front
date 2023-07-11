@@ -7,6 +7,7 @@ import axios from "../../../api/axios";
 import icono from "../../../images/icono_perfil.png";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import phone from '../../../images/phone-call.png'
 
 function Telefono() {
   const [open, setOpen] = useState(false);
@@ -54,14 +55,14 @@ function Telefono() {
         onClick={() => {
           setOpen(true);
         }}
-        className="cursor-pointer w-full border-t border-gray-100  text-gray-50 hover:text-gray-600 py-4 pl-6 pr-3  block hover:bg-gray-100 transition duration-150"
+        className="w-full text-gray-50 hover:text-gray-600 pl-7 pr-3 hover:bg-gray-100 transition duration-150"
       >
         <img
-          src={icono}
+          src={phone}
           alt=""
-          className="rounded-full h-6 shadow-md inline-block mr-2"
+          className="h-8 inline-block mr-2"
         />
-        Mi telefono
+        Mi teléfono
       </div>
       {open && (
         <Dialog

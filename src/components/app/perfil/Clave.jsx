@@ -6,6 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useSnackbar } from "notistack";
 import axios from "../../../api/axios";
 import icono from "../../../images/icono_perfil.png";
+import llave from "../../../images/key.png";
 
 function Clave() {
   const [open, setOpen] = useState(false);
@@ -50,14 +51,14 @@ function Clave() {
         onClick={() => {
           setOpen(true);
         }}
-        className="cursor-pointer w-full  border-gray-100 text-gray-50 hover:text-gray-600 py-4 pl-6 pr-3  block hover:bg-gray-100 transition duration-150"
+        className="cursor-pointer w-full  border-gray-100 text-gray-50 hover:text-gray-600 pl-6 pr-3  block hover:bg-gray-100 transition duration-150 font-inter"
       >
         <img
-          src={icono}
+          src={llave}
           alt=""
-          className="rounded-full h-6 shadow-md inline-block mr-2"
+          className="h-10 inline-block mr-2"
         />
-        Configuracion de clave
+        Configuración de clave
       </div>
       {open && (
         <Dialog

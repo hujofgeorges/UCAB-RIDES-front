@@ -5,7 +5,8 @@ import axios from '../../../api/axios';
 import {v4 as uuidv4} from 'uuid';
 
 
-export const ChatContainer = ({currentChatt, currentUser, input, setInput, socket}) => {  
+
+export const ChatContainer = ({currentChatt, currentUser, input, setInput, socket, rol}) => {  
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
@@ -79,6 +80,7 @@ export const ChatContainer = ({currentChatt, currentUser, input, setInput, socke
               <div className="username">
                 <h3>{currentChatt.name.split(" ")[0]}</h3>
               </div>
+              
             </div>
 
           </div>
@@ -87,17 +89,31 @@ export const ChatContainer = ({currentChatt, currentUser, input, setInput, socke
               messages.map((message) => {
                 return (
                 <div ref={scrollRef} key={uuidv4()} > 
-                  <div className={`message ${message.fromSelf ? "sended" : "recieved"}`}> 
-                    <div className="content">
-                    <p>
-                        {message.message}
-                    </p>
-                 </div>
-                 </div>
+
+                  {rol === "conductor" ? 
+                    <div className={`message ${message.fromSelf ? "sendedConductor" : "recievedConductor"}`}> 
+                      <div className="content">
+                        <p>
+                            {message.message}
+                        </p>
+                      </div>
+                    </div>
+                    : 
+                    <div className={`message ${message.fromSelf ? "sendedPasajero" : "recievedPasajero"}`}> 
+                      <div className="content">
+                        <p>
+                            {message.message}
+                        </p>
+                      </div>
+                    </div>
+                  }
+
                 </div>
                )
               })
             }
+
+            
           </div>
              <ChatInput handleSendMsg={handleSendMsg} input={input} setInput={setInput} /> 
         </Container>
@@ -108,6 +124,7 @@ export const ChatContainer = ({currentChatt, currentUser, input, setInput, socke
 
 
 const Container = styled.div`
+ 
   padding-top: 1rem;
   display: grid;
   grid-template-rows: 10% 78% 12%;
@@ -125,11 +142,14 @@ const Container = styled.div`
       .avatar {
         img {
           height: 3rem;
+          border-radius: 50%;
         }
       }
       .username {
         h3 {
-          color: white;
+          color: black;
+          font-family: 'inter', sans-serif;
+          font-size: 1.6rem;
         }
       }
     }
@@ -140,6 +160,7 @@ const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
     overflow: auto;
+    font-family: 'inter', sans-serif;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -157,23 +178,38 @@ const Container = styled.div`
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 1rem;
-        color: #d1d1d1;
+        color: black;
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;
         }
       }
     }
-    .sended {
+    .sendedConductor {
       justify-content: flex-end;
       .content {
-        background-color: #4f04ff21;
+        background-color: #2BB94F;
       }
     }
-    .recieved {
+    .recievedConductor {
       justify-content: flex-start;
       .content {
-        background-color: #9900ff20;
+        // background-color: #c0c0c0;
+        background-color: #37b4e3;
       }
     }
+    .sendedPasajero {
+      justify-content: flex-end;
+      .content {
+        background-color: #37b4e3;
+      }
+    }
+    .recievedPasajero {
+      justify-content: flex-start;
+      .content {
+        // background-color: #c0c0c0;
+        background-color: #2BB94F;
+      }
+    }
+    
   }
 `;

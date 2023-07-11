@@ -11,6 +11,7 @@ import Dsidebar from "../../../components/app/Dsidebar";
 import DropdownVehiculo from "../../../utils/DropdownVehiculo";
 
 import AgregarVehiculo from "../../../utils/AgregarVehiculo";
+import Bsidebar from "../../../components/app/Bsidebar";
 
 function Vehiculos() {
   const [vehiculos, setVehiculos] = useState(null);
@@ -81,7 +82,7 @@ function Vehiculos() {
           </div>
         </div>
       </div>
-      <Dsidebar />
+      <Bsidebar />
     </>
   );
 }

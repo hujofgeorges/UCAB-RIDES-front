@@ -36,6 +36,7 @@ import CrearRuta from "./pages/app/DarCola/CrearRuta";
 import Politicas from "./pages/web/Politicas";
 import PersonalizarRuta from "./pages/app/DarCola/PersonalizarRuta";
 import { Chat } from "./components/app/Chat/Chat";
+import { PerfilN } from "./pages/app/PerfilN/PerfilN";
 
 initAxiosInterceptors();
 
@@ -99,7 +100,7 @@ function App() {
             path="/configurar/ubicacion"
             element={<ConfigurarUbicacion user={user} />}
           />
-
+          <Route path="/perfilN" element={<PerfilN user={user} />} />
           <Route element={<EstaEnCola access_token={access_token} />}>
             <Route
               path="/listado/colas"
