@@ -4,7 +4,7 @@ import casa from "../../images/casa.png"
 import ruta from "../../images/ruta.png"
 import cola from "../../images/cola.png"
 import perfil from "../../images/perfil.png"
-import ajustes from "../../images/ajustes.png"
+import chat from "../../images/conversation.png"
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -34,13 +34,14 @@ function Bsidebar() {
         '/listado/rutas': 1,
         '/conductor/cola/curso': 2,
         '/perfil/conductor': 3,
-        '/ajustes': 4,
-        '/contactos':3,
+        '/chat': 4,
+        '/contactos': 3,
         '/vehiculos': 3,
+
     };
 
     const activeIndex = routeToIndexMap[location.pathname];
-    
+
     const style = {
         "--clr": "#f44336",
     };
@@ -94,13 +95,17 @@ function Bsidebar() {
                     </NavLink>
 
                 </li>
-                <li className="list">
-                    <a href="#" >
-                        <span className="icon">
-                            <img src={ajustes} alt="Icono Conductor" className='custom-size' />
-                        </span>
-                        <span className="h5 text font-inter">Ajustes</span>
-                    </a>
+                <li className={activeIndex === 4 ? 'list active' : 'list'}>
+                    <NavLink
+                        to="/chat"
+                    >
+                        <a href="#" >
+                            <span className="icon">
+                                <img src={chat} alt="Icono Conductor" className='custom-size' />
+                            </span>
+                            <span className="h5 text font-inter">Chat</span>
+                        </a>
+                    </NavLink>
                 </li>
                 <div className="indicator"></div>
             </ul>

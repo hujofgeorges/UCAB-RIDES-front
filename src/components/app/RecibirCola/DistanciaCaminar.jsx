@@ -7,6 +7,7 @@ import { useSnackbar } from "notistack";
 import axios from "../../../api/axios";
 import icono from "../../../images/icono_perfil.png"
 // import { distancia_a_caminar } from "../../hooks/RutaMasCorta";
+import ubi from '../../../images/walk.png'
 
 function DistanciaCaminar() {
   const [open, setOpen] = useState(false);
@@ -65,14 +66,14 @@ function DistanciaCaminar() {
         onClick={() => {
           setOpen(true);
         }}
-        className="cursor-pointer w-full border-t border-gray-100  text-gray-50 hover:text-gray-600 py-4 pl-6 pr-3  block hover:bg-gray-100 transition duration-150"
+        className=" border-gray-100  text-gray-50 hover:text-gray-600 pl-6 pr-3 hover:bg-gray-100 transition duration-150"
       >
         <img
-          src={icono}
+          src={ubi}
           alt=""
-          className="rounded-full h-6 shadow-md inline-block mr-2"
+          className="h-10 inline-block mr-2"
         />
-        Distancia dispuesto/a a caminar
+        Distancia dispuesto a caminar
       </div>
       {open && (
         <Dialog

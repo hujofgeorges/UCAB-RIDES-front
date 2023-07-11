@@ -70,7 +70,7 @@ function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput, ro
 
     { toggleChat && ( 
       <div>
-        <img src={chatox} className='chat-button' onClick={showLeftbar} />
+        <img src={chatox} className='chat-button' onClick={() => showLeftbar(true)} />
       </div>
     )} 
      
@@ -96,7 +96,7 @@ function NavbarChat({contacts, currentUser, changeChat, toggleChat, setInput, ro
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-              <PredetMsgs setInput={setInput} rol={rol}/>
+              <PredetMsgs setInput={setInput} rol={rol} showLeftbar={showLeftbar}/>
           </div>
         </nav>
     </>

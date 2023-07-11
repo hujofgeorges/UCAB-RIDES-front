@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
-import {msjpasajeroUcab, msjconductorUcab, msjconductorCasa, msjpasajeroCasa} from "./mensajesData.js"
+import { msjpasajeroUcab, msjconductorUcab, msjconductorCasa, msjpasajeroCasa } from "./mensajesData.js"
 import { useState } from "react";
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
-export const PredetMsgs = ({setInput, rol}) => {
+export const PredetMsgs = ({ setInput, rol, showLeftbar }) => {
   const [currentSelected, setCurrentSelected] = useState(undefined);
 
   const [opcionSeleccionada, setOpcionSeleccionada] = useState("");
@@ -13,107 +13,123 @@ export const PredetMsgs = ({setInput, rol}) => {
   };
 
   return (
-   <>
-  <div style={{ borderBottom: '1px solid black', width: '100%' }}></div>
-   <Container>
+    <>
+      <div style={{ borderBottom: '1px solid black', width: '100%' }}></div>
+      <Container>
         <div className="brand">
           <h3> Mensajes </h3>
         </div>
-        
+
         <div className="contacts">
 
-        <div className={"button-51"} onClick={() => handleOpcionSeleccionada("opcion1")} > 
-                  <div className="username mx-auto">
-                     <h3> Destino: Ucab </h3>
+          <div className={"button-51"} onClick={() => handleOpcionSeleccionada("opcion1")} >
+            <div className="username mx-auto">
+              <h3> Destino: Ucab </h3>
+            </div>
+          </div>
+
+          <div className={"button-52"} onClick={() => handleOpcionSeleccionada("opcion2")} >
+            <div className="username mx-auto">
+              <h3> Destino: Casa </h3>
+            </div>
+          </div>
+
+          <div style={{ borderBottom: '1px solid black', width: '100%' }}></div>
+
+
+          {
+            rol === "pasajero" && opcionSeleccionada === "opcion1" && (
+              msjpasajeroUcab.map((msj, index) => {
+                return (
+                  <div
+                    key={uuidv4()}
+                    className={`boton-verde ${index === currentSelected ? "selected" : ""}`}
+                    onClick={() => {
+                      setInput(msj);
+                      showLeftbar(true);
+                    }
+                    }
+                  >
+                    <div className="username">
+                      <h3>{msj}</h3>
+                    </div>
                   </div>
+                );
+              })
+            )
+          }
+
+          {
+            rol === "pasajero" && opcionSeleccionada === "opcion2" && (
+              msjpasajeroCasa.map((msj, index) => {
+                return (
+                  <div
+                    key={uuidv4()}
+                    className={`boton-azul ${index === currentSelected ? "selected" : ""}`}
+                    onClick={() => {
+                      setInput(msj);
+                      showLeftbar(true);
+                    }
+                    }
+                  >
+                    <div className="username">
+                      <h3>{msj}</h3>
+                    </div>
+                  </div>
+                );
+              })
+            )
+          }
+
+          {
+            rol === "conductor" && opcionSeleccionada === "opcion1" && (
+              msjconductorUcab.map((msj, index) => {
+                return (
+                  <div
+                    key={uuidv4()}
+                    className={`boton-verde ${index === currentSelected ? "selected" : ""}`}
+                    onClick={() => {
+                      setInput(msj);
+                      showLeftbar(true);
+                    }
+                    }
+                  >
+                    <div className="username">
+                      <h3>{msj}</h3>
+                    </div>
+                  </div>
+                );
+              })
+            )
+          }
+
+
+          {
+            rol === "conductor" && opcionSeleccionada === "opcion2" && (
+              msjconductorCasa.map((msj, index) => {
+                return (
+                  <div
+                    key={uuidv4()}
+                    className={`boton-azul ${index === currentSelected ? "selected" : ""}`}
+                    onClick={() => {
+                      setInput(msj);
+                      showLeftbar(true);
+                    }
+                    }
+                  >
+                    <div className="username">
+                      <h3>{msj}</h3>
+                    </div>
+                  </div>
+                );
+              })
+            )
+          }
+
         </div>
+      </Container>
 
-        <div className={"button-52"} onClick={() => handleOpcionSeleccionada("opcion2")} >  
-                  <div className="username mx-auto">
-                     <h3> Destino: Casa </h3>
-                  </div>
-        </div>
-        
-        <div style={{ borderBottom: '1px solid black', width: '100%' }}></div>
-
-      
-        {
-          rol === "pasajero" && opcionSeleccionada === "opcion1" && (
-            msjpasajeroUcab.map((msj, index) => {
-              return (
-                <div
-                  key={uuidv4()}
-                  className={`boton-verde ${index === currentSelected ? "selected" : ""}`}
-                  onClick={() => setInput(msj)}
-                >
-                  <div className="username">
-                    <h3>{msj}</h3>
-                  </div>
-                </div>
-              );
-            })
-          )
-      }
-
-      {
-          rol === "pasajero" && opcionSeleccionada === "opcion2" && (
-            msjpasajeroCasa.map((msj, index) => {
-              return (
-                <div
-                  key={uuidv4()}
-                  className={`boton-azul ${index === currentSelected ? "selected" : ""}`}
-                  onClick={() => setInput(msj)}
-                >
-                  <div className="username">
-                    <h3>{msj}</h3>
-                  </div>
-                </div>
-              );
-            })
-          )
-      }
-
-      {
-          rol === "conductor" && opcionSeleccionada === "opcion1" && (
-            msjconductorUcab.map((msj, index) => {
-              return (
-                <div
-                  key={uuidv4()}
-                  className={`boton-verde ${index === currentSelected ? "selected" : ""}`}
-                  onClick={() => setInput(msj)}
-                >
-                  <div className="username">
-                    <h3>{msj}</h3>
-                  </div>
-                </div>
-              );
-            })
-          )
-      }
-
-
-        {
-          rol === "conductor" && opcionSeleccionada === "opcion2" && (
-            msjconductorCasa.map((msj, index) => {
-              return (
-                <div
-                  key={uuidv4()}
-                  className={`boton-azul ${index === currentSelected ? "selected" : ""}`}
-                  onClick={() => setInput(msj)}
-                >
-                  <div className="username">
-                    <h3>{msj}</h3>
-                  </div>
-                </div>
-              );
-            })
-          )
-        }
-
-        </div>
-   </Container>
-   
-   </>
+    </>
   )
 }
 
@@ -314,7 +330,7 @@ height: 90vh;
     }
   }
 `;
-  {/* {
+{/* {
     rol === "pasajero" ? (
   
   

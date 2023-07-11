@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../api/axios";
 import DetallesDarCola from "../../../components/app/darCola/DetallesDarCola";
-import Dsidebar from "../../../components/app/Dsidebar";
 import UsuariosPorAceptar from "../../../components/app/darCola/UsuariosPorAceptar";
 import logo from "../../../images/fondo_logo432x460.png";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { refresh } from "aos";
+import Bsidebar from "../../../components/app/Bsidebar";
 
 function ColaAbierta({user}) {
   console.log('ColaAbierta')
@@ -152,7 +152,7 @@ function ColaAbierta({user}) {
           </div>
         </>
       )}
-      <Dsidebar />
+      <Bsidebar />
     </>
   );
 }

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import ContactosSos from "../../../components/app/perfil/ContactosSos";
 import Telefono from "../../../components/app/perfil/Telefono";
 import axios from "../../../api/axios";
+import Bsidebar from "../../../components/app/Bsidebar";
 
 function PerfilConductor({ user ,access_token}) {
   user = JSON.parse(user);
@@ -119,7 +120,7 @@ function PerfilConductor({ user ,access_token}) {
         <CerrarSesion />
       </div>
 
-      <Dsidebar />
+      <Bsidebar />
     </>
   );
 }

@@ -17,7 +17,7 @@ export const msjpasajeroCasa = [
 ]
 
 export const msjpasajeroUcab = [
-    `Mi número de teléfono es: ${user.phoneNumber}`,
+    `Mi número de teléfono es: ${user?.phoneNumber}`,
     '¡Hola!',
     'Voy para el punto de encuentro',
     '¡Ya llegué al punto de encuentro!',
@@ -32,7 +32,7 @@ export const msjpasajeroUcab = [
 ]
 
 export const msjconductorUcab = [
-    `Mi número de teléfono es: ${user.phoneNumber} `,
+    `Mi número de teléfono es: ${user?.phoneNumber} `,
     '¡Hola!',
     'Te espero 5 minutos',
     'Te espero en el punto de encuentro',

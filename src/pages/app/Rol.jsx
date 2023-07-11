@@ -96,7 +96,7 @@ function Rol() {
               <img src={conductor} alt="Icono Conductor" className="border-2 border-customGreen mx-auto w-20 rounded-md mb-2" /> {/* Reemplaza "/ruta-conductor.png" con la ruta de tu imagen para conductor */}
             </div>
           </NavLink>
-          <NavLink to="/listado/colas" onClick={setPasajero}>
+          <NavLink to="/perfilN" onClick={setPasajero}>
             <div className="text-black font-inter text-3xl mb-2 text-center">
               <span className="block mt-2 mb-3">Pasajero</span>
               <img src={pasajero} alt="Icono Pasajero" className="mx-auto border-2 border-azul w-20 rounded-md mb-2" /> {/* Reemplaza "/ruta-pasajero.png" con la ruta de tu imagen para pasajero */}
